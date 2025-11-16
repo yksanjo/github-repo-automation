@@ -1,0 +1,15 @@
+{
+  "description": "Enhanced automation tool for GitHub repository setup",
+  "topics": [
+    "automation",
+    "github",
+    "python",
+    "cli",
+    "open-source"
+  ],
+  "custom_badges": [
+    "[![Maintained](https://img.shields.io/badge/Maintained-yes-green.svg)](https://github.com/owner/repo/graphs/commit-activity)",
+    "[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)"
+  ]
+}
+
