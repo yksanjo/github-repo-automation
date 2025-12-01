@@ -1,7 +1,7 @@
 # GitHub Repository Automation Tool
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/) [![GitHub stars](https://img.shields.io/github/stars/yksanjo/github-repo-automation?style=social)](https://github.com/yksanjo/github-repo-automation/stargazers) [![GitHub forks](https://img.shields.io/github/forks/yksanjo/github-repo-automation.svg)](https://github.com/yksanjo/github-repo-automation/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/yksanjo/github-repo-automation.svg)](https://github.com/yksanjo/github-repo-automation/issues) [![Last commit](https://img.shields.io/github/last-commit/yksanjo/github-repo-automation.svg)](https://github.com/yksanjo/github-repo-automation/commits/main) [![Maintained](https://img.shields.io/badge/Maintained-yes-green.svg)](https://github.com/yksanjo/github-repo-automation/graphs/commit-activity) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![GitHub issues](https://img.shields.io/github/issues/yksanjo/github-repo-automation.svg)](https://github.com/yksanjo/github-repo-automation/issues) [![Last commit](https://img.shields.io/github/last-commit/yksanjo/github-repo-automation.svg)](https://github.com/yksanjo/github-repo-automation/commits/main)
 
 
 🚀 Automatically configure your GitHub repositories with descriptions, topics, and README badges. Perfect for when uploading repos from Cursor or setting up new projects.
