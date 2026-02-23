@@ -1,5 +1,12 @@
 # github-repo-automation
 
+Production-grade project scaffold focused on reliability, maintainability, and fast onboarding.
+
+[![CI](https://img.shields.io/github/actions/workflow/status/yksanjo/github-repo-automation/ci.yml?branch=main&label=ci)](https://github.com/yksanjo/github-repo-automation/actions)
+![License](https://img.shields.io/github/license/yksanjo/github-repo-automation)
+![Last Commit](https://img.shields.io/github/last-commit/yksanjo/github-repo-automation)
+![Repo Size](https://img.shields.io/github/repo-size/yksanjo/github-repo-automation)
+
 ## Detailed Description
 
 github-repo-automation is maintained as an industry-grade software project with production-ready engineering practices.  
