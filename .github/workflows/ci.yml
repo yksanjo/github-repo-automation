@@ -6,11 +6,19 @@ on:
     branches: [main, master]
 
 jobs:
-  markdown:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: DavidAnson/markdownlint-cli2-action@v18
+      - uses: actions/setup-python@v5
         with:
-          globs: |
-            **/*.md
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+      - name: Syntax check
+        run: python -m py_compile github-repo-automation.py
+      - name: Run tests
+        run: pytest -q
