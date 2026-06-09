@@ -1,91 +1,70 @@
 # github-repo-automation
 
-Production-grade project scaffold focused on reliability, maintainability, and fast onboarding.
+A small command-line tool that configures a GitHub repository for you: it sets
+the repository **description** and **topics**, detects the project type, and
+injects an appropriate set of **README badges** (license, language, GitHub
+stats, CI, Docker, last-commit) just below the title.
 
-[![CI](https://img.shields.io/github/actions/workflow/status/yksanjo/github-repo-automation/ci.yml?branch=main&label=ci)](https://github.com/yksanjo/github-repo-automation/actions)
-![License](https://img.shields.io/github/license/yksanjo/github-repo-automation)
-![Last Commit](https://img.shields.io/github/last-commit/yksanjo/github-repo-automation)
-![Repo Size](https://img.shields.io/github/repo-size/yksanjo/github-repo-automation)
+## Stack
 
-## Detailed Description
+Python 3, the GitHub REST API, and the [`requests`](https://pypi.org/project/requests/)
+library (the only dependency).
 
-github-repo-automation is maintained as an industry-grade software project with production-ready engineering practices.  
-This repository includes documented setup, quality gates, operational guidance, and governance standards so contributors can safely build, test, and ship changes with confidence.
-
-## Problem Statement
-
-Describe the user or business problem this project solves, the target users, and expected outcomes.
-
-## Solution Overview
-
-Summarize the architecture, core modules, and runtime behavior at a high level.
-
-## Key Features
-
-- Clear project scope and intended use.
-- Reproducible local development workflow.
-- Test coverage and CI quality gates.
-- Security and contribution policies.
-- Deployment-ready repository structure.
-
-## Repository Structure
-
-```text
-.
-|-- src/                  # Core implementation
-|-- tests/                # Automated test suites
-|-- docs/                 # Design notes and operational docs
-|-- .github/workflows/    # CI pipelines
-|-- README.md
-|-- LICENSE
-|-- CONTRIBUTING.md
-|-- SECURITY.md
-|-- CODE_OF_CONDUCT.md
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Git
-- Project runtime/toolchain for this repo
-
-### Local Setup
+## Install
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt  # or: pip install -e .[dev]
-pytest
+pip install -r requirements.txt
 ```
+
+## Authentication
+
+Provide a GitHub personal access token with `repo` scope so the tool can update
+the repository. Pass it with `--token` or set `GITHUB_TOKEN`:
+
+```bash
+export GITHUB_TOKEN=ghp_xxx
+```
+
+Without a token the tool runs read-only against the unauthenticated API (lower
+rate limit) and cannot write changes.
 
 ## Usage
 
-Document primary commands, API routes, CLI examples, or UI workflows here.
+```bash
+# Description + topics + badges from current repo metadata
+python3 github-repo-automation.py --repo owner/repo-name
 
-## Quality Standards
+# Provide your own description and topics
+python3 github-repo-automation.py --repo owner/repo-name \
+  --description "My awesome project" \
+  --topics python,automation,cli
 
-- CI must pass before merge.
-- Changes require tests for critical behavior.
-- Security-sensitive changes should include risk notes.
-- Keep pull requests focused and reviewable.
+# Drive everything from a config file
+python3 github-repo-automation.py --repo owner/repo-name --config github-repo-automation.config.example.json
 
-## Security
+# Only refresh the README badges
+python3 github-repo-automation.py --repo owner/repo-name --badges-only
 
-See `SECURITY.md` for responsible disclosure and handling guidelines.
+# Preview changes without writing them
+python3 github-repo-automation.py --repo owner/repo-name --dry-run
+```
 
-## Contributing
+`--repo` accepts either `owner/repo` or a full GitHub URL. Use `--branch` to
+target a branch other than `main`.
 
-See `CONTRIBUTING.md` for branching, commit, and pull request expectations.
+## Configuration file
 
-## Roadmap
+A JSON file may supply `description`, `topics`, and `custom_badges`. See
+`github-repo-automation.config.example.json` for the format.
 
-Track upcoming milestones, technical debt, and planned feature work.
+## Repository structure
 
-## Support
-
-Open a GitHub issue for bugs, feature requests, or documentation gaps.
-
-## License
-
-This project is released under the MIT License.
+```text
+github-repo-automation.py   # the CLI (API client, badge generator, README updater)
+github-repo-automation.config.example.json
+setup-repo.sh               # convenience wrapper
+tests/                      # tests
+requirements.txt            # requests
+```
